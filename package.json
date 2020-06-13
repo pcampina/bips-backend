@@ -28,5 +28,8 @@
     "pg-hstore": "^2.3.3",
     "prettier": "^2.0.5",
     "sequelize-cli": "^5.5.1"
+  },
+  "engines": {
+    "node": "13.11.0"
   }
 }
