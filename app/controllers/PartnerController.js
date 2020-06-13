@@ -1,10 +1,10 @@
-const { Partner } = require("../models");
+const { Partner } = require('../models');
 
 class PartnerController {
   async index(request, response) {
     try {
       const partners = await Partner.findAll({
-        attributes: ["id", "name", "description", "latitude", "longitude"],
+        attributes: ['id', 'name', 'description', 'latitude', 'longitude'],
       });
 
       response.json(partners);
@@ -16,7 +16,7 @@ class PartnerController {
   async show(request, response) {
     try {
       const partner = await Partner.findByPk(request.params.id, {
-        attributes: ["id", "name", "description", "latitude", "longitude"],
+        attributes: ['id', 'name', 'description', 'latitude', 'longitude'],
       });
 
       return response.json(partner);
