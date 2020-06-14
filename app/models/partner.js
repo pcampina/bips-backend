@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     categoryId: DataTypes.UUID,
     image: DataTypes.STRING,
     rating: DataTypes.INTEGER,
+    address: DataTypes.STRING,
   });
 
   Partner.associate = models => {

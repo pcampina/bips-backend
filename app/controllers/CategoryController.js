@@ -29,7 +29,10 @@ class CategoryController {
     try {
       const category = await Category.update(
         request.body,
-        { where: { id: request.params.id } }
+        {
+          where: { id: request.params.id },
+          returning: true
+        }
       );
 
       return response.json(category);

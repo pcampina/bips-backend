@@ -4,7 +4,7 @@ class PartnerController {
   async index(request, response) {
     try {
       const partners = await Partner.findAll({
-        attributes: ['id', 'name', 'description', 'latitude', 'longitude', 'CategoryId', 'image', 'rating'],
+        attributes: ['id', 'name', 'description', 'latitude', 'longitude', 'CategoryId', 'image', 'rating', 'address'],
       });
 
       response.json(partners);
@@ -16,7 +16,7 @@ class PartnerController {
   async show(request, response) {
     try {
       const partner = await Partner.findByPk(request.params.id, {
-        attributes: ['id', 'name', 'description', 'latitude', 'longitude', 'CategoryId', 'image', 'rating'],
+        attributes: ['id', 'name', 'description', 'latitude', 'longitude', 'CategoryId', 'image', 'rating', 'address'],
       });
 
       return response.json(partner);
@@ -29,7 +29,10 @@ class PartnerController {
     try {
       const partner = await Partner.update(
         request.body,
-        { where: { id: request.params.id } }
+        {
+          where: { id: request.params.id },
+          returning: true
+        }
       );
 
       return response.json(partner);
