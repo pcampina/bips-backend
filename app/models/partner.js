@@ -9,7 +9,14 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING,
     latitude: DataTypes.STRING,
     longitude: DataTypes.STRING,
+    categoryId: DataTypes.UUID,
+    image: DataTypes.STRING,
+    rating: DataTypes.INTEGER,
   });
+
+  Partner.associate = models => {
+    Partner.belongsTo(models.Category);
+  };
 
   return Partner;
 };

@@ -4,7 +4,7 @@ class PartnerController {
   async index(request, response) {
     try {
       const partners = await Partner.findAll({
-        attributes: ['id', 'name', 'description', 'latitude', 'longitude'],
+        attributes: ['id', 'name', 'description', 'latitude', 'longitude', 'CategoryId', 'image', 'rating'],
       });
 
       response.json(partners);
@@ -16,7 +16,7 @@ class PartnerController {
   async show(request, response) {
     try {
       const partner = await Partner.findByPk(request.params.id, {
-        attributes: ['id', 'name', 'description', 'latitude', 'longitude'],
+        attributes: ['id', 'name', 'description', 'latitude', 'longitude', 'CategoryId', 'image', 'rating'],
       });
 
       return response.json(partner);
@@ -27,7 +27,12 @@ class PartnerController {
 
   async store(request, response) {
     try {
-      const partner = await Partner.create(request.body);
+      const modifyData = {
+        ...request.body,
+        rating: Math.floor(Math.random() * Math.floor(6))
+      }
+
+      const partner = await Partner.create(modifyData);
 
       response.json(partner);
     } catch (err) {
