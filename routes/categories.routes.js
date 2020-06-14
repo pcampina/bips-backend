@@ -7,6 +7,7 @@ const categoriesRouter = Router();
 categoriesRouter.get('/', CategoryController.index);
 categoriesRouter.post('/', CategoryController.store);
 categoriesRouter.get('/:id', CategoryController.show);
+categoriesRouter.patch('/:id', CategoryController.update);
 categoriesRouter.delete('/:id', CategoryController.destroy);
 
 module.exports = categoriesRouter;

@@ -25,6 +25,19 @@ class CategoryController {
     }
   }
 
+  async update(request, response) {
+    try {
+      const category = await Category.update(
+        request.body,
+        { where: { id: request.params.id } }
+      );
+
+      return response.json(category);
+    } catch (err) {
+      return response.status(400).json({ error: err.message });
+    }
+  }
+
   async store(request, response) {
     try {
       const category = await Category.create(request.body);
